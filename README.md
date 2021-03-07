@@ -1,4 +1,4 @@
-# hat_until_new_name
+# Bandersnatch
 
 `sudo apt install tesseract-ocr`
 
