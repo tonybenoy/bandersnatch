@@ -4,6 +4,8 @@ import os
 import pytesseract
 from PIL import Image
 
+TESSDATA_DIR_CONFIG = '--tessdata-dir "."'
+
 
 def pdf_to_image(
     path_to_file: str = "hat_1.pdf", path_to_store: Optional[str] = None
@@ -19,7 +21,7 @@ def pdf_to_image(
 
 
 def image_to_text(filename: str):
-    text = pytesseract.image_to_string(Image.open(filename))
+    text = pytesseract.image_to_string(Image.open(filename), config=TESSDATA_DIR_CONFIG)
     return text
 
 
