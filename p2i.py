@@ -3,10 +3,10 @@ from pdf2image import convert_from_path
 import os
 import pytesseract
 from PIL import Image
-
+import pandas as pd
 
 def pdf_to_image(
-    path_to_file: str = "hat_1.pdf", path_to_store: Optional[str] = None
+    path_to_file: str = "pdfs/hat_1.pdf", path_to_store: Optional[str] = None
 ) -> bool:
     if not path_to_store:
         path_to_store = f"./{path_to_file.split('/')[-1].split('.pdf')[0]}"
@@ -19,9 +19,17 @@ def pdf_to_image(
 
 
 def image_to_text(filename: str):
-    text = pytesseract.image_to_string(Image.open(filename))
-    return text
+    content = pd.DataFrame()
+    text = pytesseract.image_to_string(Image.open(filename),lang='eng')
+    temp = pd.DataFrame({'Words':[text]})
+    content.append(temp)
+    content.head()
+    writer = pd.ExcelWriter('wordstest.xlsx')
+    content.to_excel(writer,'Sheet1')
+    writer.save()
+
+    return None
 
 
-pdf_to_image()
+# pdf_to_image()
 print(image_to_text("./hat_1/page_15.jpg"))
