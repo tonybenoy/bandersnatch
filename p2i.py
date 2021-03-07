@@ -3,7 +3,9 @@ from pdf2image import convert_from_path
 import os
 import pytesseract
 from PIL import Image
-import pandas as pd
+
+TESSDATA_DIR_CONFIG = '--tessdata-dir "."'
+
 
 def pdf_to_image(
     path_to_file: str = "pdfs/hat_1.pdf", path_to_store: Optional[str] = None
@@ -19,16 +21,8 @@ def pdf_to_image(
 
 
 def image_to_text(filename: str):
-    content = pd.DataFrame()
-    text = pytesseract.image_to_string(Image.open(filename),lang='eng')
-    temp = pd.DataFrame({'Words':[text]})
-    content.append(temp)
-    content.head()
-    writer = pd.ExcelWriter('wordstest.xlsx')
-    content.to_excel(writer,'Sheet1')
-    writer.save()
-
-    return None
+    text = pytesseract.image_to_string(Image.open(filename), config=TESSDATA_DIR_CONFIG)
+    return text
 
 
 # pdf_to_image()

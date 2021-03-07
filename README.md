@@ -1,8 +1,14 @@
 # Bandersnatch
 
+`sudo apt install tesseract-ocr`
+`sudo apt install libtesseract-dev`
 
-Quickstart
+`wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata`
 
-pip install -r requirements.txt
-sudo apt install tesseract-ocr
-sudo apt install libtesseract-dev
+`python -m venv .venv`
+
+`source venv/bin/activate`
+
+`pip install -r requirements.txt`
+
+`python p2i.py`
