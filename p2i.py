@@ -23,7 +23,7 @@ def pdf_to_image(
 
 
 
-def image_to_text(pic_name str)):
+def image_to_text(pic_name: str)):
     img = cv2.imread(pic_name)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = cv2.bilateralFilter(gray, 11, 17, 17)
@@ -52,8 +52,3 @@ def image_to_text(pic_name str)):
 
 pdf_to_image()
 image_to_text('./hat_1/page_15.jpg')
-
-
-
-
-
