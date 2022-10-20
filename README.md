@@ -1,13 +1,17 @@
 # Bandersnatch
 
+Ubuntu
 `sudo apt install tesseract-ocr`
 
 `wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata`
 
-`python -m venv .venv`
 
-`source venv/bin/activate`
+Arch Linux
+`yay -S tesseract tesseract-data-eng`
 
-`pip install -r requirements.txt`
+`poetry install`
 
-`python p2i.py`
+`curl https://ceodelhi.gov.in/engdata/AC40/U05A40P1.pdf --output a.pdf`
+`export TESSDATA_PREFIX=/usr/share/tessdata/`
+
+`poetry run python python p2i.py`
